@@ -1,0 +1,111 @@
+{% extends 'myadmin/base.html' %}
+
+{% block main_body %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">图书馆管理</h1>
+          </div><!-- /.col -->
+          <!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <strong class="card-title">图书馆信息表</strong>
+                  <div class="card-tools">
+                      <form action="{%  url 'myadmin_shop_index' 1 %}" method="get">
+                      <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="keyword" class="form-control float-right" placeholder="图书馆名称">
+
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                      </form>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>图书馆名称</th>
+                      <th>封面图片</th>
+                      <th>LOGO图片</th>
+                      <th>联系电话</th>
+                      <th>地址</th>
+                      <th>当前状态</th>
+                      <th>添加时间</th>
+                      <th>修改时间</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for vo in shoplist %}
+                      <tr>
+                      <td>{{ vo.id }}</td>
+                      <td>{{ vo.name }}</td>
+                      <td><img src="/static/uploads/shop/{{ vo.cover_pic }}" width="60" height="60"/></td>
+                      <td><img src="/static/uploads/shop/{{ vo.banner_pic }}" width="60" height="60"/></td>
+                      <td>{{ vo.phone }}</td>
+                      <td>{{ vo.address }}</td>
+                      <td>
+                          {% if vo.status == 1 %}
+                              <span class="badge bg-gradient-green">正常</span>
+                          {% elif vo.status == 2 %}
+                              <span class="badge bg-danger">禁用</span>
+                          {% elif vo.status == 9 %}
+                              <span class="badge bg-danger">已删除</span>
+                          {% else %}
+                              <span class="badge bg-danger">未知状态</span>
+                          {% endif %}
+                      </td>
+                      <td>{{ vo.create_at|date:'Y-m-d'}}</td>
+                      <td>{{ vo.update_at|date:'Y-m-d' }}</td>
+
+                      <td>
+                        <a type="button" href="{% url 'myadmin_shop_edit' vo.id %}" class="btn btn-success btn-md">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true">编辑</span>
+                            </a>
+                        <a type="button" href="{% url 'myadmin_shop_delete' vo.id %}" class="btn btn-danger btn-md">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">删除</span></a>
+{#                        <button type="button" class="btn btn-warning btn-md">#}
+{#                        <span class="glyphicon glyphicon-search" aria-hidden="true">查看订单</span>#}
+{#                        </button>#}
+                      </td>
+                      </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <a role="button" href="{% url 'myadmin_shop_add' %}" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加图书馆</a>
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="{% url 'myadmin_shop_index' pIndex|add:-1%}?{{ mywhere|join:'&' }}">&laquo;</a></li>
+                  {% for p in plist %}
+                      <li {% if p == pIndex %}class="active"{% endif %}><a class="page-link" href="{% url 'myadmin_shop_index' p%}?{{ mywhere|join:'&' }}">{{ p }}</a></li>
+                  {% endfor %}
+                  <li class="page-item"><a class="page-link" href="{% url 'myadmin_shop_index' pIndex|add:1 %}?{{ mywhere|join:'&' }}">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+     </div>
+</section>
+
+{% endblock %}

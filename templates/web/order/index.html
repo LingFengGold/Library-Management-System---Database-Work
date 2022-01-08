@@ -1,0 +1,151 @@
+{% extends 'web/base.html' %}
+
+{% block main_body %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">订单管理</h1>
+          </div><!-- /.col -->
+          <!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <strong class="card-title">订单信息表</strong>
+                  <div class="card-tools">
+                      <form action="{%  url 'web_order_index' 1 %}" method="get">
+                      <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="keyword" class="form-control float-right" placeholder="图书名称">
+
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                      </form>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>图书馆名称</th>
+                      <th>图书名称</th>
+                      <th>图片</th>
+                      <th>借阅</th>
+                      <th>还书</th>
+                      <th>订单状态</th>
+                      <th>借阅时间</th>
+                      <th>归还时间</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for vo in orderlist %}
+                      <tr>
+                      <td>{{ vo.id }}</td>
+                      <td>{{ vo.shopname }}</td>
+                      <td>{{ vo.bookname }}</td>
+                      <td><img src="/static/uploads/book/{{ vo.coverpic }}" width="60" /></td>
+                      <td>
+                          {% if vo.borrow_status == 1 %}
+                              <span class="badge bg-danger">申请中</span>
+                          {% elif vo.borrow_status == 2 %}
+                              <span class="badge bg-danger">申请失败</span>
+                          {% elif vo.borrow_status == 3 %}
+                              <span class="badge bg-success">申请成功</span>
+                          {% elif vo.borrow_status == 4 %}
+                              <span class="badge bg-success">申请续借中</span>
+                          {% elif vo.borrow_status == 5 %}
+                              <span class="badge bg-success">续借成功</span>
+                          {% else %}
+                              <span class="badge bg-danger">未知状态</span>
+                          {% endif %}
+                      </td>
+                      <td>
+                          {% if vo.borrow_status == 1 %}
+                              <span class="badge bg-danger">暂未借阅</span>
+                          {% elif vo.return_status == 1 %}
+                              <span class="badge bg-danger">申请中</span>
+                          {% elif vo.return_status == 2 %}
+                              <span class="badge bg-danger">申请失败</span>
+                          {% elif vo.return_status == 3 %}
+                              <span class="badge bg-success">已还书</span>
+                          {% elif vo.return_status == 4 %}
+                              <span class="badge bg-danger">未还书</span>
+                          {% elif vo.return_status == 5 %}
+                              <span class="badge bg-danger">已超时</span>
+                          {% else %}
+                              <span class="badge bg-danger">未知状态</span>
+                          {% endif %}
+                      </td>
+                      <td>
+                          {% if vo.status == 1 %}
+                              <span class="badge bg-success">正常</span>
+                          {% elif vo.status == 2 %}
+                              <span class="badge bg-danger">禁用</span>
+                          {% else %}
+                              <span class="badge bg-danger">未知状态</span>
+                          {% endif %}
+                      </td>
+                      <td>{% if vo.borrow_status != 1%}{{ vo.starttime|date:'Y-m-d H:i:s'}}{% endif %} </td>
+                      <td>{% if vo.borrow_status != 1%}{{ vo.endtime|date:'Y-m-d H:i:s'}}{% endif %} </td>
+
+                      <td>
+                          <form class="form-horizontal" action="{% url 'web_order_reborrow' vo.id%}" method="post" >
+                                <input type="hidden" name="borrow_status" value="{{ vo.borrow_status }}" />
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-success btn-xs">
+                                 <span class="glyphicon glyphicon-edit" aria-hidden="true">续借</span>
+                                </button>
+                          </form>
+                          <form class="form-horizontal" action="{% url 'web_order_return_' vo.id%}" method="post" >
+                                <input type="hidden" name="return_status" value="{{ vo.return_status }}" />
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger btn-xs">
+                                 <span class="glyphicon glyphicon-edit" aria-hidden="true">还书</span>
+                                </button>
+                          </form>
+
+{#                        <a type="button" href="{%  url 'myadmin_book_delete' vo.id%}" class="btn btn-danger btn-xs">#}
+{#                        <span class="glyphicon glyphicon-trash" aria-hidden="true">删除</span></a>#}
+{#                        <a href="#" type="button" class="btn btn-warning btn-xs">#}
+{#                        <span class="glyphicon glyphicon-search" aria-hidden="true">查看借出量</span>#}
+{#                        </a>#}
+                      </td>
+                      </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+{#                <a role="button" href="{% url 'myadmin_book_add' %}" class="btn btn-primary">#}
+{#                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加图书</a>#}
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="{% url 'web_order_index' pIndex|add:-1%}?{{ mywhere|join:'&' }}">&laquo;</a></li>
+                  {% for p in plist %}
+                      <li {% if p == pIndex %}class="active"{% endif %}><a class="page-link" href="{% url 'web_order_index' p%}?{{ mywhere|join:'&' }}">{{ p }}</a></li>
+                  {% endfor %}
+                  <li class="page-item"><a class="page-link" href="{% url 'web_order_index' pIndex|add:1 %}?{{ mywhere|join:'&' }}">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+     </div>
+</section>
+
+{% endblock %}

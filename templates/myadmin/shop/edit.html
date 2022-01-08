@@ -1,0 +1,66 @@
+{% extends "myadmin/base.html" %}
+
+{% block main_body %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">图书馆管理</h1>
+          </div><!-- /.col -->
+          <!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <div class="card card-primary content">
+              <div class="card-header">
+                <h3 class="card-title">编辑图书馆信息</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form-horizontal" action="{% url 'myadmin_shop_update' shop.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">图书馆名称</label>
+                    <input type="text" name="name" value="{{ shop.name }}" class="form-control"  placeholder="学校名称-图书馆名称">
+                  </div>
+                      <div class="form-group">
+                    <label for="exampleInputEmail1">联系电话</label>
+                    <input type="text" name="phone" value="{{ shop.phone }}" class="form-control"  placeholder="联系电话">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">具体地址</label>
+                    <input type="text" name="address" value="{{ shop.address }}" class="form-control" placeholder="具体地址" >
+                  </div>
+                  <div class="form-group">
+                  <label class="exampleInputPassword1">当前状态</label>
+                  <div class="controls">
+                    &nbsp; &nbsp;
+                    <input type="radio" name="status" class="input-xlarge" value="1"
+                    {% if shop.status == 1 %}checked{% endif %} /> 营业中...
+                     &nbsp; &nbsp;
+                    <input type="radio" name="status" class="input-xlarge" value="2"
+                    {% if shop.status == 2 %}checked{% endif %} /> 闭馆中...
+                  </div>
+                </div>
+                  <div class="form-group">
+                  <label for="inputPassword3" >图书馆封面</label>
+                  <div class="col-sm-4">
+                    <input type="file" name="cover_pic"  />
+                  </div>
+                  </div>
+                     <div class="form-group">
+                  <label for="inputPassword3" >图书馆LOGO</label>
+                  <div class="col-sm-4">
+                    <input type="file" name="banner_pic"  />
+                  </div>
+                  </div>
+                  </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">完成编辑</button>
+                </div>
+              </form>
+            </div>
+
+{% endblock %}
