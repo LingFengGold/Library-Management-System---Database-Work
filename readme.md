@@ -1,8 +1,6 @@
 ## 前言
 
-​	近年来，随着国民生活水平、生活质量的迅速提高，科学技术的飞速发展，我们已步入信息化、数字化的时代，web办公、“互联网+”已经成为时代的主流。而图书馆是人民群众满足文化需求的重要途径，是我们老百姓有书畅读的保障，与我们的生活密切相关。工作效率对于图书馆来说十分重要，图书馆访问量大，需求性强。因此，图书馆需要更直接方便快捷的管理方法来应对日常的工作事务，以提高整个图书馆的运作效率。于是，图书馆对管理信息系统的需求越来越迫切。一套好的信息系统在全面提高图书馆的为人民服务功能，提高图书馆整体工作效率，为读者提供方便快捷全面的服务等方面都能发挥出重要作用。而图书馆信息管理系统作为整个图书馆管理系统的子系统，同样非常重要。它的设计的操作性和维护性的好坏将直接影响整个系统，乃至整个图书馆的运行效率。
-
- 	本项目就是研究图书馆信息管理系统的数据库构建过程。该数据库展现了借书过程中的基本信息与基本流程，主要包括会员、员工的基本信息资料，办理注册登录，图书馆、图书分类、图书的基本信息资料，图书馆的信息括图书馆的地址、电话、封面照片、logo照片等内容的录入编辑修改，以及图书的基本信息资料，包括图书的所属图书馆、图书分类、图书名称、图书封面、图书价格、图书作者等信息的录入编辑修改。会员借阅图书、归还图书、续借图书等功能，同时管理员还可以在后台审核这些操作。
+​	近年来，随着国民生活水平、生活质量的迅速提高，科学技术的飞速发展，我们已步入信息化、数字化的时代，web办公、“互联网+”已经成为时代的主流。而图书馆是人民群众满足文化需求的重要途径，是我们老百姓有书畅读的保障，与我们的生活密切相关。工作效率对于图书馆来说十分重要，图书馆访问量大，需求性强。因此，图书馆需要更直接方便快捷的管理方法来应对日常的工作事务，以提高整个图书馆的运作效率。于是，图书馆对管理信息系统的需求越来越迫切。一套好的信息系统在全面提高图书馆的为人民服务功能，提高图书馆整体工作效率，为读者提供方便快捷全面的服务等方面都能发挥出重要作用。而图书馆信息管理系统作为整个图书馆管理系统的子系统，同样非常重要。它的设计的操作性和维护性的好坏将直接影响整个系统，乃至整个图书馆的运行效率。	本项目就是研究图书馆信息管理系统的数据库构建过程。该数据库展现了借书过程中的基本信息与基本流程，主要包括会员、员工的基本信息资料，办理注册登录，图书馆、图书分类、图书的基本信息资料，图书馆的信息括图书馆的地址、电话、封面照片、logo照片等内容的录入编辑修改，以及图书的基本信息资料，包括图书的所属图书馆、图书分类、图书名称、图书封面、图书价格、图书作者等信息的录入编辑修改。会员借阅图书、归还图书、续借图书等功能，同时管理员还可以在后台审核这些操作。
 
 ## 一、系统开发平台
 
@@ -105,10 +103,6 @@
  
 
 ## 四、需求分析
-
-此学生管理信息系统的主要功能如下图所示：
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsMtTKzl.png)
 
 ### 4.1 用户需求说明
 
@@ -258,47 +252,23 @@
 
 ### 5.1 ER图
 
-本系统的ER图如下：
-
-|      |                                                              |
-| ---- | ------------------------------------------------------------ |
-|      | ![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsm8z0Fa.jpg) |
-
 该ER图包括会员、管理员、借书、订单、图书馆、图书分类六个实体和用管理、借书、还书、属于、含有、位于、审核、核对八个联系。
-
- 
-
- 
 
 ### 5.2 数据字典
 
 #### 5.2.1 从数据字典中抽取出来的系统实体描述： 
 
-（1）员工（id号、账号、昵称、密码、密码干扰、状态、添加时间、修改时间）
+（1）员工（id号、账号、昵称、密码、密码干扰、状态、添加时间、修改时间） 
 
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsnGOAZY.jpg) 
+（2）会员（id号、账号、昵称、头像、年龄、性别、电话、状态、添加时间、修改时间） 
 
-（2）会员（id号、账号、昵称、头像、年龄、性别、电话、状态、添加时间、修改时间）
+（3）图书馆（id号、图书馆名称、封面图片、图标logo、图书馆地址、联系电话、状态、添加时间、修改时间） 
 
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsHXG5vB.jpg) 
+（4）书籍类别（id号、图书馆id、类别名称、状态、添加时间、修改时间） 
 
-（3）图书馆（id号、图书馆名称、封面图片、图标logo、图书馆地址、联系电话、状态、添加时间、修改时间）
+（5）书籍（id号、图书馆id、类别id、图书图片、图书名称、单价、状态、添加时间、修改时间） 
 
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsNWYcuP.jpg) 
-
-（4）书籍类别（id号、图书馆id、类别名称、状态、添加时间、修改时间）
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsUr7ok8.jpg) 
-
-（5）书籍（id号、图书馆id、类别id、图书图片、图书名称、单价、状态、添加时间、修改时间）
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsnlgoM1.jpg) 
-
- 
-
-（6）订单详情（id号、图书馆id、会员id、图书id、借阅状态、归还状态、状态、借书时间、还书时间、添加时间、修改时间）
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsxcXhV3.jpg) 
+（6）订单详情（id号、图书馆id、会员id、图书id、借阅状态、归还状态、状态、借书时间、还书时间、添加时间、修改时间） 
 
 订单状态含义：
 
@@ -488,50 +458,30 @@ WHERE id = 101；
 
 #### 7.2.1 注册界面（用户）
 
-​	若用户未注册，则可以点击“注册一个新的账号”进入注册界面。注册账号需要输入的信息有账号、昵称、年龄、性别、电话、密码、重复密码，系统会检查两次输入的密码是否一致，并且会对密码进行MD5加密。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsKLnX6X.jpg) 
+​	若用户未注册，则可以点击“注册一个新的账号”进入注册界面。注册账号需要输入的信息有账号、昵称、年龄、性别、电话、密码、重复密码，系统会检查两次输入的密码是否一致，并且会对密码进行MD5加密。 
 
 #### 7.2.2 登录界面
 ​	用户登录界面：http://127.0.0.1:8000/login
 
-​	用户在登录界面输入用户名和密码并经过系统验证后，可以进入图书馆管理系统-用户界面进行相关操作（账号密码为注册所用的值）。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsI2SzU3.jpg) 
-
- 
+​	用户在登录界面输入用户名和密码并经过系统验证后，可以进入图书馆管理系统-用户界面进行相关操作（账号密码为注册所用的值）。 
 
 #### 7.2.2 主服务界面（用户）
 
-​	在输入正确的账号密码后进入主服务界面，主服务界面左侧为导航栏，用户可以查看图书馆、图书分类、图书信息，并且进行订单管理。主界面上方也有导航栏，可以点击后台管理进入后台，最右侧可以使界面全屏、查看个人信息。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsOt53bs.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsZkjqf6.jpg) 
-
-  
+​	在输入正确的账号密码后进入主服务界面，主服务界面左侧为导航栏，用户可以查看图书馆、图书分类、图书信息，并且进行订单管理。主界面上方也有导航栏，可以点击后台管理进入后台，最右侧可以使界面全屏、查看个人信息。  
 
 #### 7.2.3 图书馆界面（用户）
 
 ​	用户可以在导航栏点击图书馆进入图书馆信息界面，查看现有的图书馆信息。图书馆信息表会列出图书馆ID、图书馆名称、封面图片、LOGO图片、联系电话、地址、当前状态等信息，提供翻页、搜索等便利方法。
 
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wps3G5kvy.jpg) 
-
- 
-
 #### 7.2.4 图书分类界面（用户）
 
-用户可以在导航栏点击图书馆进入图书分类界面，查看现有的图书分类信息。图书分类信息表会列出图书分类ID、图书馆名称、类别名称，提供翻页、搜索等便利方法。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsQrnFzB.jpg) 
+用户可以在导航栏点击图书馆进入图书分类界面，查看现有的图书分类信息。图书分类信息表会列出图书分类ID、图书馆名称、类别名称，提供翻页、搜索等便利方法。 
 
 #### 7.2.4 图书信息界面（用户）
 
 ​	用户可以在导航栏点击图书信息进入图书借阅界面，查看现有的图书信息。图书分类信息表会列出图书ID、图书馆名称、图书分类、图书封面图片、作者、单价、剩余数量、状态。提供翻页、搜索等便利方法。
 
-​	用户点击申请借阅即可完成借阅申请，用户可以到订单管理界面查看借阅申请是否被通过，此时若该图书的剩余数量等于0则会弹出报错信息。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsajpdhm.jpg) 
+​	用户点击申请借阅即可完成借阅申请，用户可以到订单管理界面查看借阅申请是否被通过，此时若该图书的剩余数量等于0则会弹出报错信息。 
 
 #### 7.2.4 图书借阅订单界面（用户）
 
@@ -539,72 +489,44 @@ WHERE id = 101；
 
 ​	若申请成功且未还书，用户可以点击续借提出续借申请。
 
-​	若未还书或者已超时，用户可以点击还书提出还书申请。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsRLNjuv.jpg) 
+​	若未还书或者已超时，用户可以点击还书提出还书申请。 
 
 #### 7.2.5 登录界面（管理员）
 
 ​	管理员登录界面：http://127.0.0.1:8000/myadmin/login
 
-​	管理员在登录界面输入用户名和密码并经过系统验证后，可以进入图书馆管理系统-后台界面进行相关操作（账号密码为预设的值）。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsAdIFcG.jpg) 
+​	管理员在登录界面输入用户名和密码并经过系统验证后，可以进入图书馆管理系统-后台界面进行相关操作（账号密码为预设的值）。 
 
 #### 7.2.6 主服务界面（管理员）
 
-​	在输入正确的账号密码后进入主服务界面，主服务界面左侧为导航栏，管理员可以查看员工、图书馆、图书分类、图书信息，并且进行订单、会员管理。主界面上方也有导航栏，可以点击用户首页进入用户界面，最右侧可以使界面全屏、查看个人信息。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsuDLqk5.jpg) 
+​	在输入正确的账号密码后进入主服务界面，主服务界面左侧为导航栏，管理员可以查看员工、图书馆、图书分类、图书信息，并且进行订单、会员管理。主界面上方也有导航栏，可以点击用户首页进入用户界面，最右侧可以使界面全屏、查看个人信息。 
 
 #### 7.2.7 员工管理（管理员）
 
 ​	管理员可以在导航栏点击员工管理进入员工管理信息界面，查看现有的员工信息。员工信息表会列出员工ID、员工名称、员工昵称、当前状态、添加时间、修改时间等信息，提供翻页、搜索等便利方法。
 
-​	管理员可以点击编辑、删除、添加员工进行进一步管理。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsYkr8xT.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpszcgi5x.jpg)![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsvKJvwx.jpg) 
+​	管理员可以点击编辑、删除、添加员工进行进一步管理。  
 
 #### 7.2.8 图书馆管理（管理员）
 
 ​	管理员可以在导航栏点击图书馆管理进入图书馆管理信息界面，查看现有的图书馆信息。图书馆信息表会列出图书馆ID、图书馆名称、图书馆封面照片、图书馆LOGO照片、联系电话、地址、当前状态、添加时间、修改时间等信息，提供翻页、搜索等便利方法。
 
-​	管理员可以点击编辑、删除、添加图书馆进行进一步管理。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsXyni6g.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsldXl8K.jpg)![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wps048n4N.jpg) 
+​	管理员可以点击编辑、删除、添加图书馆进行进一步管理。 
 
 #### 7.2.9 图书馆分类管理（管理员）
 
 ​	管理员可以在导航栏点击图书分类进入图书分类管理信息界面，查看现有的图书分类信息。图书分类信息表会列出图书分类ID、图书馆名称、类别名称、当前状态、添加时间、修改时间等信息，提供翻页、搜索等便利方法。
 
-​	管理员可以点击编辑、删除、添加图书分类进行进一步管理。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wps83bB6o.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsZtm1fm.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsqeE17s.jpg) 
+​	管理员可以点击编辑、删除、添加图书分类进行进一步管理。  
 
 #### 7.2.10图书信息管理（管理员）
 
 ​	管理员可以在导航栏点击图书信息进入图书信息管理信息界面，查看现有的图书信息。图书信息表会列出图书ID、图书馆名称、类别名称、图书封面、图书名称、作者、单价、数量、当前状态、添加时间等信息，提供翻页、搜索等便利方法。
 
-​	管理员可以点击编辑、删除、添加图书信息进行进一步管理。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsXEIZej.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsoT8Gbb.jpg) 
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsvQVdhY.jpg) 
+​	管理员可以点击编辑、删除、添加图书信息进行进一步管理。   
 
 #### 7.2.10订单管理（管理员）
 
 ​	管理员可以在导航栏点击订单管理进入订单管理信息界面，查看现有的订单信息。订单信息表会列出订单ID、图书馆名称、图书名称、图书封面、借阅状态、归还状态、订单状态、借阅时间、归还时间、借阅者姓名等信息，提供翻页、分类查找等便利方法。
 
-​	管理员可以点击同意借阅、拒绝借阅、同意续借、拒绝续借、同意还书、拒绝还书等按钮对订单请求进行审核。
-
-![img](file:////private/var/folders/f8/xs5x34pj1rs4frpxpt5sdk500000gn/T/com.kingsoft.wpsoffice.mac/wps-lingfeng/ksohtml/wpsqi5fpy.jpg) 
+​	管理员可以点击同意借阅、拒绝借阅、同意续借、拒绝续借、同意还书、拒绝还书等按钮对订单请求进行审核。 
